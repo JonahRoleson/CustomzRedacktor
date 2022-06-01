@@ -12,6 +12,8 @@ import com.github.eltonvs.obd.command.engine.RPMCommand
 import com.github.eltonvs.obd.connection.ObdDeviceConnection
 import java.util.*
 import kotlinx.coroutines.*
+//what an import for a kotlin class is in the same directory
+//import com.example.enginerev.manageBluetooth as manageBluetooth1
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +33,6 @@ class MainActivity : AppCompatActivity() {
                 //val deviceHardwareAddress = device.address // MAC address
                 val cThread = ConnectThread(device)
                 cThread.run()
-
             }
 
         }
@@ -44,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         private val mmSocket: BluetoothSocket? by lazy(LazyThreadSafetyMode.NONE) {
             val uuid: UUID = UUID.fromString("47c909e6-17f0-48de-a19e-b50d59da19ae")
 
-            device.createRfcommSocketToServiceRecord(uuid)
+            device.createInsecureRfcommSocketToServiceRecord(uuid)
         }
 
         override fun run() {
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             while(run){
 
 
-                login(obdConnection).toString()
+                login(obdConnection)
             }
         }
         fun login(obdConnection: ObdDeviceConnection){
