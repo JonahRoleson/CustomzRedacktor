@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 // Connect to the remote device through the socket. This call blocks
                 // until it succeeds or throws an exception.
                 socket.connect()
-
+                //yep
                 // The connection attempt succeeded. Perform work associated with
                 // the connection in a separate thread.
                 manageMyConnectedSocket(socket)
